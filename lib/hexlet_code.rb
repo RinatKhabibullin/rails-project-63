@@ -6,5 +6,10 @@ module HexletCode
   autoload(:Tag, "hexlet_code/tag.rb")
 
   class Error < StandardError; end
-  # Your code goes here...
+
+  def self.form_for(_user, url: "#")
+    attributes = { action: url, method: "post" }.compact
+
+    HexletCode::Tag.build("form", attributes)
+  end
 end
