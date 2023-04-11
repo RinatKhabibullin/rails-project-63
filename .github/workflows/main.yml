@@ -1,0 +1,30 @@
+name: main
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: build
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+          bundler-cache: true
+
+      - name: install gems
+        run: make install
+
+      - name: lint
+        run: make lint
+
+      - name: test
+        run: make test
+    
