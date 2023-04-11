@@ -23,7 +23,7 @@ jobs:
         run: make install
 
       - name: lint
-        run: make lint
+        run: bundle exec rubocop
 
       - name: test
         run: make test
