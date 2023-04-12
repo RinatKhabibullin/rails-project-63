@@ -2,17 +2,19 @@
 
 module HexletCode
   class Tag
-    VOID_ELEMENTS_NAMES = ["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param",
-                           "source", "track", "wbr>"].freeze
+    VOID_ELEMENTS_NAMES = [:area, :base, :br, :col, :embed, :hr, :img, :input, :link, :meta, :param,
+                           :source, :track, "wbr>".to_sym].freeze
 
     attr_reader :name, :attributes, :body
 
-    def self.build(name, attributes = {}, &block)
-      new(name, attributes, &block).build
+    class << self
+      def build(name, attributes = {}, &block)
+        new(name, attributes, &block).build
+      end
     end
 
     def initialize(name, attributes, &block)
-      @name = name
+      @name = name.to_sym
       @attributes = attributes
       @body = block.nil? ? "" : block.call
     end
