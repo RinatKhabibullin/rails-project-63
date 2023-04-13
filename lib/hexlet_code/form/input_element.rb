@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-autoload(:BaseElement, File.expand_path('base_element.rb', __dir__))
-
-class InputElement < BaseElement
+class InputElement
   AS = :input
   TAG_NAME = :input
   TYPE = :text
 
   attr_reader :object, :name, :attributes
+
+  def self.build(**attributes)
+    new(**attributes).build
+  end
 
   def initialize(**attributes)
     @name = attributes[:name]

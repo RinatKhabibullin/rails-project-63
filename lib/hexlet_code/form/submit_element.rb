@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
-autoload(:BaseElement, File.expand_path('base_element.rb', __dir__))
-
-class SubmitElement < BaseElement
+class SubmitElement
   TAG_NAME = :input
   TYPE = :submit
   DEFAULT_VALUE = 'Save'
 
   attr_reader :value
+
+  def self.build(**attributes)
+    new(**attributes).build
+  end
 
   def initialize(**attributes)
     @value = attributes[:value]

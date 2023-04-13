@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
-autoload(:BaseElement, File.expand_path('base_element.rb', __dir__))
-
-class LabelElement < BaseElement
+class LabelElement
   TAG_NAME = :label
 
   attr_reader :object, :name
+
+  def self.build(**attributes)
+    new(**attributes).build
+  end
 
   def initialize(**attributes)
     @name = attributes[:name]
