@@ -10,16 +10,22 @@ module HexletCode
 
   class Form
     TAG_NAME = :form
+    DEFAULT_METHOD = :post
+    DEFAULT_ACTION = "#"
 
     attr_reader :object, :attributes, :body
 
-    def self.build(name, attributes = {}, &block)
-      new(name, attributes, &block).build
+    def self.build(name, url: DEFAULT_ACTION, **attributes, &block)
+      new(name, url: url, **attributes, &block).build
     end
 
-    def initialize(object, url)
+    def initialize(object, url:, **attributes)
       @object = object
-      @attributes = { action: url, method: "post" }.compact
+      @attributes = {
+        action: url,
+        method: DEFAULT_METHOD,
+        **attributes
+      }
       @body = ""
 
       yield self

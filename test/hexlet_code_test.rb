@@ -12,7 +12,7 @@ class HexletCodeTest < Minitest::Test
   end
 
   def test_form_for_with_action
-    form = HexletCode.form_for @user, url: "/users" do |f|
+    form = HexletCode.form_for @user, url: "/user", method: :get, class: "hexlet-form" do |f|
       f.input :name, class: "user-input"
       f.input :job
       f.input :job, as: :text, rows: 50, cols: 50

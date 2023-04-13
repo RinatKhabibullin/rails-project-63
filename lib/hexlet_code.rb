@@ -7,7 +7,7 @@ module HexletCode
 
   class Error < StandardError; end
 
-  def self.form_for(object, url: "#", &block)
-    HexletCode::Form.build(object, url, &block)
+  def self.form_for(object, **attributes, &block)
+    HexletCode::Form.build(object, **attributes, &block)
   end
 end
