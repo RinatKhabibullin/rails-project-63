@@ -14,7 +14,7 @@ module HexletCode
       @stack = []
       @tags = plane_string.scan(/<[^>]+>|[^<]+/)
       @previous_tag = nil
-      @result = ""
+      @result = ''
     end
 
     def convert
@@ -38,7 +38,7 @@ module HexletCode
     end
 
     def indented_row(tag)
-      %(#{"  " * stack.count}#{tag}\n)
+      %(#{'  ' * stack.count}#{tag}\n)
     end
 
     def row(tag)
@@ -68,7 +68,7 @@ module HexletCode
     end
 
     def closing_tag?(tag)
-      tag[1] == "/"
+      tag[1] == '/'
     end
   end
 end

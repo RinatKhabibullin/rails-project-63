@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-autoload(:BaseElement, File.expand_path("base_element.rb", __dir__))
+autoload(:BaseElement, File.expand_path('base_element.rb', __dir__))
 
 class TextareaElement < BaseElement
   AS = :text
   TAG_NAME = :textarea
-  DEFAULT_ATTRIBUTES = { cols: "20", rows: "40" }.freeze
+  DEFAULT_ATTRIBUTES = { cols: '20', rows: '40' }.freeze
 
   attr_reader :object, :name, :attributes
 
@@ -24,7 +24,7 @@ class TextareaElement < BaseElement
   def element_attributes
     @element_attributes ||= {
       **attributes,
-      name: name
+      name:
     }.merge(DEFAULT_ATTRIBUTES) { |_key, first, _second| first }
   end
 

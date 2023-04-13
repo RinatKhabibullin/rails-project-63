@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class BaseElement
-  def self.build(**attributes, &block)
-    new(**attributes, &block).build
+  def self.build(**attributes, &)
+    new(**attributes, &).build
   end
 
   def initialize(_attributes)

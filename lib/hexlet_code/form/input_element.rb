@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-autoload(:BaseElement, File.expand_path("base_element.rb", __dir__))
+autoload(:BaseElement, File.expand_path('base_element.rb', __dir__))
 
 class InputElement < BaseElement
   AS = :input
@@ -23,7 +23,7 @@ class InputElement < BaseElement
 
   def element_attributes
     @element_attributes ||= {
-      name: name,
+      name:,
       type: TYPE,
       value: object.public_send(name),
       **attributes
