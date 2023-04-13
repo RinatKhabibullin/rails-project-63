@@ -1,20 +1,16 @@
 # frozen_string_literal: true
 
 class BaseElement
-  attr_reader :object, :name, :attributes
-
-  def self.build(object, name, **attributes, &block)
-    new(object, name, **attributes, &block).build
+  def self.build(**attributes, &block)
+    new(**attributes, &block).build
   end
 
-  def initialize(object, name, **attributes)
-    @object = object
-    @name = name
-    @attributes = attributes
+  def initialize(_attributes)
+    NotImplementedError
   end
 
   def build
-    HexletCode::Tag.build(tag_name, element_attributes) { object.public_send(name) }
+    NotImplementedError
   end
 
   private

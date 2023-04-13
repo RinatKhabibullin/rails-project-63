@@ -12,5 +12,8 @@ Style/StringLiteralsInInterpolation:
 Style/Documentation:
   Enabled: false
 
+Lint/MissingSuper:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120

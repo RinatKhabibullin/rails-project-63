@@ -31,6 +31,7 @@ class HexletCodeTest < Minitest::Test
     form = HexletCode.form_for @user, url: "#" do |f|
       f.input :name, class: "user-input"
       f.input :job
+      f.submit
     end
 
     html_fixture = File.read(File.expand_path("fixtures/test_form_for_with_input.html", __dir__))
@@ -40,6 +41,7 @@ class HexletCodeTest < Minitest::Test
   def test_form_for_with_textarea
     form = HexletCode.form_for @user, url: "#" do |f|
       f.input :job, as: :text, rows: 50, cols: 50
+      f.submit "Wow"
     end
 
     html_fixture = File.read(File.expand_path("fixtures/test_form_for_with_textarea.html", __dir__))

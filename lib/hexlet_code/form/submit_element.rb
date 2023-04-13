@@ -2,17 +2,15 @@
 
 autoload(:BaseElement, File.expand_path("base_element.rb", __dir__))
 
-class InputElement < BaseElement
-  AS = :input
+class SubmitElement < BaseElement
   TAG_NAME = :input
-  TYPE = :text
+  TYPE = :submit
+  DEFAULT_VALUE = "Save"
 
-  attr_reader :object, :name, :attributes
+  attr_reader :value
 
   def initialize(**attributes)
-    @name = attributes[:name]
-    @object = attributes[:object]
-    @attributes = attributes.except(:name, :object)
+    @value = attributes[:value]
   end
 
   def build
@@ -23,10 +21,8 @@ class InputElement < BaseElement
 
   def element_attributes
     @element_attributes ||= {
-      name: name,
       type: TYPE,
-      value: object.public_send(name),
-      **attributes
+      value: value || DEFAULT_VALUE
     }
   end
 
