@@ -23,7 +23,7 @@ class HexletCodeTest < Minitest::Test
 
     html_fixture = File.read(File.expand_path('fixtures/form_with_action.html', __dir__))
 
-    assert_equal form, html_fixture
+    assert_equal html_fixture, form
   end
 
   def test_form_for_without_action
@@ -38,7 +38,7 @@ class HexletCodeTest < Minitest::Test
 
     html_fixture = File.read(File.expand_path('fixtures/form_without_action.html', __dir__))
 
-    assert_equal form, html_fixture
+    assert_equal html_fixture, form
   end
 
   def test_form_for_with_unexisted_field
