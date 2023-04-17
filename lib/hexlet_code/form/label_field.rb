@@ -1,27 +1,23 @@
 # frozen_string_literal: true
 
-class LabelElement
+class LabelField
   TAG_NAME = :label
 
   attr_reader :object, :name
-
-  def self.build(**attributes)
-    new(**attributes).build
-  end
 
   def initialize(**attributes)
     @name = attributes[:name]
     @object = attributes[:object]
   end
 
-  def build
-    HexletCode::Tag.build(tag_name, element_attributes) { object.public_send(name) }
+  def build_html
+    HexletCode::HtmlTag.build(tag_name, field_attributes) { object.public_send(name) }
   end
 
   private
 
-  def element_attributes
-    @element_attributes ||= {
+  def field_attributes
+    @field_attributes ||= {
       for: name
     }
   end

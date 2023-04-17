@@ -8,6 +8,6 @@ module HexletCode
   class Error < StandardError; end
 
   def self.form_for(object, **attributes, &)
-    HexletCode::Form.build(object, **attributes, &)
+    HexletCode::Form.build_html(object, **attributes, &)
   end
 end

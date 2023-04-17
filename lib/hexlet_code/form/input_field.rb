@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
-class InputElement
+class InputField
   AS = :input
   TAG_NAME = :input
   TYPE = :text
 
   attr_reader :object, :name, :attributes
-
-  def self.build(**attributes)
-    new(**attributes).build
-  end
 
   def initialize(**attributes)
     @name = attributes[:name]
@@ -17,14 +13,14 @@ class InputElement
     @attributes = attributes.except(:name, :object)
   end
 
-  def build
-    HexletCode::Tag.build(tag_name, element_attributes)
+  def build_html
+    HexletCode::HtmlTag.build(tag_name, field_attributes)
   end
 
   private
 
-  def element_attributes
-    @element_attributes ||= {
+  def field_attributes
+    @field_attributes ||= {
       name:,
       type: TYPE,
       value: object.public_send(name),

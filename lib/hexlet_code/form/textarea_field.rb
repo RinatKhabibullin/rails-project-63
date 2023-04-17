@@ -1,15 +1,11 @@
 # frozen_string_literal: true
 
-class TextareaElement
+class TextareaField
   AS = :text
   TAG_NAME = :textarea
   DEFAULT_ATTRIBUTES = { cols: '20', rows: '40' }.freeze
 
   attr_reader :object, :name, :attributes
-
-  def self.build(**attributes)
-    new(**attributes).build
-  end
 
   def initialize(**attributes)
     @name = attributes[:name]
@@ -17,14 +13,14 @@ class TextareaElement
     @attributes = attributes.except(:name, :object)
   end
 
-  def build
-    HexletCode::Tag.build(tag_name, element_attributes) { object.public_send(name) }
+  def build_html
+    HexletCode::HtmlTag.build(tag_name, field_attributes) { object.public_send(name) }
   end
 
   private
 
-  def element_attributes
-    @element_attributes ||= {
+  def field_attributes
+    @field_attributes ||= {
       **attributes,
       name:
     }.merge(DEFAULT_ATTRIBUTES) { |_key, first, _second| first }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
-  class Tag
+  class HtmlTag
     VOID_ELEMENTS_NAMES = %i[area base br col embed hr img input link meta param
                              source track wbr>].freeze
 
@@ -16,7 +16,7 @@ module HexletCode
     def initialize(name, attributes, &block)
       @name = name.to_sym
       @attributes = attributes
-      @body = block.nil? ? '' : block.call
+      @body = block&.call || ''
     end
 
     def build
