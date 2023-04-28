@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module HexletCode
-  class TextareaField < Tag
+  class TextField < Tag
     DEFAULT_ATTRIBUTES = { cols: '20', rows: '40' }.freeze
 
     attr_reader :name
