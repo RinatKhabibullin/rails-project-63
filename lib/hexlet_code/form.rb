@@ -4,10 +4,6 @@ module HexletCode
   class Form < Tag
     DEFAULT_METHOD = :post
     DEFAULT_ACTION = '#'
-    INPUT_TAG_CLASS_MAPPER = {
-      input: InputField,
-      text: TextareaField
-    }.freeze
 
     attr_reader :object, :action
 
@@ -29,7 +25,7 @@ module HexletCode
 
     def input(name, as: :input, **attributes)
       body << LabelField.new(object:, name:)
-      body << INPUT_TAG_CLASS_MAPPER[as.to_sym].new(object:, name:, **attributes)
+      body << "HexletCode::#{as.capitalize}Field".constantize.new(object:, name:, **attributes)
     end
 
     def submit(value = nil)
